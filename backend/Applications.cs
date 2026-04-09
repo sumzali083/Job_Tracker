@@ -1,6 +1,6 @@
 namespace JobTracker;
 
-public class Applications
+public class Application
 {
     public int Id { get; set; }
     public string Company { get; set; }
