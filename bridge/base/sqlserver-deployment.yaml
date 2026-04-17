@@ -1,0 +1,37 @@
+#! sqlserver-deployment.yaml
+# Generated code, do not edit
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: sqlserver
+    namespace: job-tracker
+    labels:
+        com.docker.compose.project: job_tracker
+        com.docker.compose.service: sqlserver
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            com.docker.compose.project: job_tracker
+            com.docker.compose.service: sqlserver
+    strategy:
+        type: Recreate
+    template:
+        metadata:
+            labels:
+                com.docker.compose.project: job_tracker
+                com.docker.compose.service: sqlserver
+                com.docker.compose.network.default: "true"
+        spec:
+            containers:
+                - name: sqlserver
+                  image: mcr.microsoft.com/mssql/server:2022-latest
+                  imagePullPolicy: IfNotPresent
+                  env:
+                    - name: ACCEPT_EULA
+                      value: "Y"
+                    - name: SA_PASSWORD
+                      value: "YourPassword123!"
+                  ports:
+                    - name: sqlserver-1433
+                      containerPort: 1433

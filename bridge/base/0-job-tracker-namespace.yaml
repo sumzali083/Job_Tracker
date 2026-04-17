@@ -1,0 +1,8 @@
+#! 0-job-tracker-namespace.yaml
+# Generated code, do not edit
+apiVersion: v1
+kind: Namespace
+metadata:
+    name: job-tracker
+    labels:
+        com.docker.compose.project: job_tracker
